@@ -19,7 +19,7 @@ class CreateBoardgamesTable extends Migration
             $table->string('publisher');
             $table->string('language');
             $table->string('dificulty');
-            $table->longText('description');
+            $table->longText('description')->nullable();
             $table->smallInteger('min_players');
             $table->smallInteger('max_players');
             $table->string('play_time');

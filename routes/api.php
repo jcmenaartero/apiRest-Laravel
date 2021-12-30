@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\API\BoardgameController;
+use App\Http\Controllers\AutenticateController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,7 +22,16 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::get('boardgames', [BoardgameController::class, 'index']);
-Route::post('boardgames/new', [BoardgameController::class, 'create']);
 Route::get('boardgames/{boardgame}', [BoardgameController::class, 'show']);
-Route::put('boardgames/{boardgame}', [BoardgameController::class, 'update']);
-Route::delete('boardgames/{boardgame}', [BoardgameController::class, 'delete']);
+
+/*Route::apiResource('boardgames', BoardgameController::class);*/
+
+Route::post('user/register', [AutenticateController::class, 'register']);
+Route::post('user/login', [AutenticateController::class, 'login']);
+
+Route::group(['middleware' => ['auth:sanctum']], function(){
+    Route::post('user/logout', [AutenticateController::class, 'logout']);
+    Route::post('boardgames/new', [BoardgameController::class, 'create']);
+    Route::put('boardgames/{boardgame}', [BoardgameController::class, 'update']);
+    Route::delete('boardgames/{boardgame}', [BoardgameController::class, 'delete']);
+});

@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests\NewBoardgameRequest;
 use App\Http\Requests\UpdateBoardgameRequest;
+use App\Http\Resources\BoardgameResource;
 use App\Models\Boardgame;
 
 
@@ -19,7 +20,7 @@ class BoardgameController extends Controller
      */
     public function index()
     {
-        return Boardgame::all();
+        return BoardgameResource::collection(Boardgame::all());
     }
 
     /**
@@ -30,11 +31,13 @@ class BoardgameController extends Controller
      */
     public function create(NewBoardgameRequest $request)
     {
-        Boardgame::create($request->all());
+        return (new BoardgameResource(Boardgame::create($request->all())))
+                    ->additional(['msg' => 'Boardgame created']);
+        /*Boardgame::create($request->all());
         return response()->json([
             'res' => true,
             'msg' => 'Boardgame created'
-        ],200);
+        ],200);*/
     }
 
     /**
@@ -45,10 +48,11 @@ class BoardgameController extends Controller
      */
     public function show(Boardgame $boardgame)
     {
-        return response()->json([
+        return new BoardgameResource($boardgame);
+        /*return response()->json([
             'res' => true,
             'boardgame' => $boardgame
-        ],200);
+        ],200);*/
     }
 
     /**
@@ -61,10 +65,14 @@ class BoardgameController extends Controller
     public function update(UpdateBoardgameRequest $request, Boardgame $boardgame)
     {
         $boardgame->update($request->validated());
-        return response()->json([
+        return (new BoardgameResource($boardgame))
+                ->additional(['msg' => 'Boardgame updated'])
+                ->response()
+                ->setStatusCode(202);
+        /*return response()->json([
             'res' => true,
             'msg' => 'Boardgame updated'
-        ], 200);
+        ], 200);*/
     }
 
     /**
@@ -76,9 +84,10 @@ class BoardgameController extends Controller
     public function delete(Boardgame $boardgame)
     {
         $boardgame->delete();
-        return response()->json([
+        return (new BoardgameResource($boardgame))->additional(['msg' => 'Boardgame deleted']);
+        /*return response()->json([
             'res' => true,
             'msg' => 'Boardgame Deleted'
-        ], 200);
+        ], 200);*/
     }
 }
