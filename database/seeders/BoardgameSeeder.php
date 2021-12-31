@@ -19,15 +19,15 @@ class BoardgameSeeder extends Seeder
         //Debemos usar el siguiente metodo para realizar las inserciones
         DB::table('boardgames')->insert([
             [
-                'name' => 'Arkham Horror',
+                'name' => 'Arkham Horror: El juego de cartas',
                 'publisher' => 'Fantasy Flight',
                 'language' => 'Español',
                 'dificulty' => 'Medio',
-                'description' => 'Juego cooperativo, donde todos los jugadores colaboran entre sí y ganan o pierden la partida como equipo. Cada jugador controla a un intrépido investigador, uno de los pocos individuos excepcionales que están al tanto del peligro que se cierne sobre nuestro mundo. Los investigadores deben explorar la ciudad para descubrir lugares, personas y criaturas de naturaleza tanto ordinaria como sobrenatural. Con suerte, a lo largo de este periplo los investigadores reunirán las pistas y recursos necesarios para enfrentarse a los Primigenios y, en última instancia, frustrar sus malvados designios',
+                'description' => 'Arkham Horror el juego de cartas es un juego cooperativo en una ambientación de horror lovecraftiano. Mientras los Antiguos buscan una forma de entrar en nuestro mundo, los investigadores se esfuerzan por desentrañar arcanos misterios y conspiraciones.',
                 'min_players' => 1,
-                'max_players' => 6,
-                'play_time' => '30 minutos por jugador',
-                'price' => 64.95,
+                'max_players' => 4,
+                'play_time' => '60 - 120 minutos',
+                'price' => 59.99,
                 'created_at' => date('Y-m-d H:i:s'),
                 'updated_at' => date('Y-m-d H:i:s')
             ],
@@ -53,7 +53,33 @@ class BoardgameSeeder extends Seeder
                 'min_players' => 3,
                 'max_players' => 4,
                 'play_time' => '75 minutos',
-                'price' => 36.00,
+                'price' => 35.95,
+                'created_at' => date('Y-m-d H:i:s'),
+                'updated_at' => date('Y-m-d H:i:s')
+            ],
+            [
+                'name' => 'Virus',
+                'publisher' => 'Tranjis',
+                'language' => 'Español',
+                'dificulty' => 'Fácil',
+                'description' => 'Virus es uno de los juegos de cartas más vendidos. Consigue un cuerpo sano e inmunizado: cerebro, corazón, estómago y huesos libres de infecciones. No será fácil porque los virus van que vuelan. Prepara tus medicinas y arroja virus a los demás. Guárdate tus mejores armas; trasplantes de cuerpos, robos de órganos, trasmisión comunitaria, errores médicos galopantes... para los momentos más importantes.',
+                'min_players' => 2,
+                'max_players' => 6,
+                'play_time' => '20 minutos',
+                'price' => 13.46,
+                'created_at' => date('Y-m-d H:i:s'),
+                'updated_at' => date('Y-m-d H:i:s')
+            ],
+            [
+                'name' => 'Gloomhaven',
+                'publisher' => 'Asmodée',
+                'language' => 'Íngles',
+                'dificulty' => 'Medio',
+                'description' => '¡Bienvenidos a Gloomhaven! Ser un mercenario en la frontera de la civilización no es nada fácil. A aquellos lo suficientemente estúpidos o valientes como para dejar la relativa seguridad de los muros de Gloomhaven, la aventura, la riqueza y la fama les esperan en los bosques salvajes y sombríos, las cuevas nevadas de las montañas y las criptas largo tiempo olvidadas. Simplemente no esperes que nadie pague por tus servicios por adelantado, porque nadie espera que vuelvas. Gloomhaven es un juego cooperativo de combate táctico en un mundo de fantasía único y en evolución. Asume el papel de un mercenario curtido con sus propios intereses personales. Juntos, lucharéis a través de una campaña de escenarios que reaccionan y cambian en función de las acciones de los jugadores, creando un exclusivo tipo de juego lleno de tesoros descubiertos, aventureros retirados y opciones permanentes. Cada escenario ofrece a los jugadores decisiones tácticas profundas, donde las cartas de habilidad tienen múltiples usos, y usar la habilidad correcta en el momento adecuado puede significar la diferencia entre el éxito y el fracaso. Gloomhaven ofrece un combate táctico sin dados contra enemigos totalmente automatizados, cada uno con sus propios patrones de comportamiento. En esta caja, los jugadores encontrarán una experiencia de campaña de fantasía totalmente desarrollada de un alcance y profundidad sin precedentes.',
+                'min_players' => 1,
+                'max_players' => 4,
+                'play_time' => '60 - 120 minutos',
+                'price' => 149.95,
                 'created_at' => date('Y-m-d H:i:s'),
                 'updated_at' => date('Y-m-d H:i:s')
             ]
