@@ -18,7 +18,7 @@ class UserSeeder extends Seeder
             [
                 'name' => 'prueba',
                 'email' => 'prueba@asir.icv',
-                'role' => 'client',
+                'role' => 'user',
                 'password' => bcrypt('1234'),
                 'created_at' => date('Y-m-d H:i:s'),
                 'updated_at' => date('Y-m-d H:i:s')

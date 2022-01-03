@@ -1,12 +1,14 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\API;
 
 use Illuminate\Http\Request;
 
+use App\Http\Controllers\Controller;
 use App\Models\User;
 use App\Http\Requests\RegisterRequest;
 use App\Http\Requests\LoginRequest;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\ValidationException;
 
@@ -53,5 +55,15 @@ class AutenticateController extends Controller
             'res' => true,
             'msg' => 'token successfully deleted',
         ],200);
+    }
+
+    public function getUser() 
+    {
+            $user = Auth::user();
+            return  response()->json([
+                'res' => true,
+                'msg' => 'Logged in user data',
+                'data' => $user,
+            ],200);
     }
 }

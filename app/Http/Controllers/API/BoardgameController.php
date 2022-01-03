@@ -20,7 +20,7 @@ class BoardgameController extends Controller
      */
     public function index()
     {
-        return BoardgameResource::collection(Boardgame::all());
+        return BoardgameResource::collection(Boardgame::paginate(3));
     }
 
     /**
