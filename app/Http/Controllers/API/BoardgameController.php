@@ -48,11 +48,13 @@ class BoardgameController extends Controller
      */
     public function show(Boardgame $boardgame)
     {
-        return new BoardgameResource($boardgame);
-        /*return response()->json([
+        //return new BoardgameResource($boardgame);
+        $expansions = Boardgame::find($boardgame->id)->expansions;
+        return response()->json([
             'res' => true,
-            'boardgame' => $boardgame
-        ],200);*/
+            'boardgame' => $boardgame,
+            'expansions' => $expansions
+        ],200);
     }
 
     /**

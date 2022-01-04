@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\API\BoardgameController;
 use App\Http\Controllers\API\AutenticateController;
+use App\Http\Controllers\API\ExpansionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,12 +24,17 @@ use App\Http\Controllers\API\AutenticateController;
 
 /*Route::apiResource('boardgames', BoardgameController::class);*/
 
+//PUBLIC ROUTES
 Route::get('boardgames', [BoardgameController::class, 'index']);
 Route::get('boardgames/{boardgame}', [BoardgameController::class, 'show']);
+
+Route::get('expansions', [ExpansionController::class, 'index']);
+Route::get('expansions/{expansion}', [ExpansionController::class, 'show']);
 
 Route::post('user/register', [AutenticateController::class, 'register']);
 Route::post('user/login', [AutenticateController::class, 'login']);
 
+//PRIVATE ROUTES
 Route::group(['middleware' => ['auth:sanctum']], function(){
     Route::get('user', [AutenticateController::class, 'getUser']);
     Route::post('user/logout', [AutenticateController::class, 'logout']);

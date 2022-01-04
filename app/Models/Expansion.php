@@ -5,19 +5,15 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Boardgame extends Model
+class Expansion extends Model
 {
     use HasFactory;
 
     protected $fillable = [
+        'boardgame_id',
         'name',
-        'publisher',
         'language',
-        'dificulty',
         'description',
-        'min_players',
-        'max_players',
-        'play_time',
         'price'
     ];
 
@@ -26,8 +22,8 @@ class Boardgame extends Model
         'updated_at'
     ];
 
-    public function expansions()
+    public function boargames()
     {
-        return $this->hasMany(Expansion::class, 'boardgame_id');
+        return $this->belongsTo(Boardgame::class, 'id');
     }
 }
